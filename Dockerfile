@@ -2,7 +2,7 @@
 FROM mengzyou/docker-opensuse-base:42.1
 MAINTAINER Mengz You <mengz.you@outlook.com>
 
-ENV VERSION 2.4.3
+ENV VERSION 2.4.5
 ENV PKG shadowsocks-libev
 ENV REPO http://download.opensuse.org/repositories/home:/MargueriteSu/openSUSE_Leap_42.1/home:MargueriteSu.repo
 ENV PORT 8388
