@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-SEDARG="-i 's/%PASSWORD%/$PASSWORD/' $CONFIG_FILE"
-eval sed $SEDARG
+sed -ri "s|PASSWORD|${PASSWORD}|" ${CONFIG_FILE}
 
-$SSSERVER -c /etc/shadowsocks/shadowsocks-libev-config.json -u --fast-open
+/usr/bin/ss-server -c ${CONFILE_FILE} -u --fast-open

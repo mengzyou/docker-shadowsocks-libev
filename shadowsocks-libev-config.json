@@ -2,7 +2,7 @@
     "server": "0.0.0.0",
     "server_port": 8388,
     "local_port": 2046,
-    "password": "%PASSWORD%",
+    "password": "PASSWORD",
     "timeout": "600",
     "method": "aes-256-cfb"
 }
