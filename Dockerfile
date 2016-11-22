@@ -1,14 +1,15 @@
 # This is a Dockerfile to build a opensuse image which running shadowsocks service
-FROM opensuse:42.1
+FROM opensuse:tumbleweed
 MAINTAINER Mengz You <mengz.you@outlook.com>
 
-ENV VERSION 2.4.7
-ENV PKG shadowsocks-libev
-ENV REPO http://download.opensuse.org/repositories/home:/MargueriteSu/openSUSE_Leap_42.1/home:MargueriteSu.repo
-ENV PASSWORD password
-ENV CONFIG_FILE /etc/shadowsocks/shadowsocks-libev-config.json
+ENV PKG="shadowsocks-libev" \
+  VERSION="2.4.7" \
+  REPO="http://download.opensuse.org/repositories/home:/MargueriteSu/openSUSE_Tumbleweed/home:MargueriteSu.repo" \
+  PASSWORD="password" \
+  CONFIG_FILE="/etc/shadowsocks/shadowsocks-libev-config.json"
 
-RUN zypper -q ar -f -r $REPO \
+RUN set -x \
+  && zypper -q ar -f -r $REPO \
   && zypper -qn --gpg-auto-import-keys ref \
   && zypper -qn in -l --no-recommends $PKG-$VERSION \
   && zypper clean --all
@@ -20,3 +21,4 @@ EXPOSE 8388
 
 # ENTRYPOINT
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["start"]
