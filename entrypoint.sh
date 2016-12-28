@@ -1,10 +1,12 @@
 #!/bin/bash
 set -e
 
-sed -ri "s|PASSWORD|${PASSWORD}|" ${CONFIG_FILE}
-
-if [[ $1 == "start" ]]; then
-  /usr/bin/ss-server -c ${CONFIG_FILE} -u --fast-open
-else
-  exec $@
+if [[ "$1" = "start" ]]; then
+  if [[ "${PASSWORD}" ]]; then
+    sed -ri "s|\"password\":.*|\"password\": \"${PASSWORD}\",|" ${CONFIG_FILE}
+  fi
+  set -- gosu root ss-server -c ${CONFIG_FILE} -u --fast-open
 fi
+
+exec "$@"
+
