@@ -3,7 +3,7 @@ FROM opensuse:tumbleweed
 MAINTAINER Mengz You <mengz.you@outlook.com>
 
 ENV PKG="shadowsocks-libev" \
-  VERSION="2.4.7" \
+  VERSION="3.0.0" \
   REPO="http://download.opensuse.org/repositories/home:/MargueriteSu/openSUSE_Tumbleweed/home:MargueriteSu.repo" \
   CONFIG_FILE="/etc/shadowsocks/shadowsocks-libev-config.json" \
   GOSU_VERSION="1.10"
